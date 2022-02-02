@@ -10,6 +10,7 @@
 - [x] useUpdateEffect 忽略首次渲染时的执行，只在依赖更新时执行，参数和返回值类型和useEffect一样
 - [x] useClickAway 监听目标元素外的事件
 - [x] useThrottleFn 截流函数
+- [x] useThrottleEffect 为 useEffect 增加节流的能力 - 很精妙
 
 
 
