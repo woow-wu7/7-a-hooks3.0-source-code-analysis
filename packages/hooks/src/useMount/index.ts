@@ -7,6 +7,7 @@ const useMount = (fn: () => void) => {
     }
   }
 
+  // 空数组 Effect只执行一次，并且只在组件渲染完成后执行一次
   useEffect(() => {
     fn?.();
   }, []);

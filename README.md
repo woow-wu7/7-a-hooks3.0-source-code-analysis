@@ -3,7 +3,12 @@
 
 
 ### (一) 任务清单 - 完成度
-- [x] useUpdateEffect
+- [x] useMount 只在组件初始化时执行
+- [x] useUnmount 只在组件卸载时执行
+- [x] useUnmountRef 组件是否已经卸载
+
+- [x] useUpdate 强制更新组件
+- [x] useUpdateEffect 忽略首次渲染时的执行，只在依赖更新时执行，参数和返回值类型和useEffect一样
 
 
 

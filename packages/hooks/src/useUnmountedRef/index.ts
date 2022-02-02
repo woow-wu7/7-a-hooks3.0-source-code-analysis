@@ -5,10 +5,10 @@ const useUnmountedRef = () => {
   useEffect(() => {
     unmountedRef.current = false;
     return () => {
-      unmountedRef.current = true;
+      unmountedRef.current = true; // 卸载
     };
   }, []);
-  return unmountedRef;
+  return unmountedRef; // 返回
 };
 
 export default useUnmountedRef;
