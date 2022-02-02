@@ -5,7 +5,7 @@ import depsAreSame from './depsAreSame';
 import type { BasicTarget } from './domTarget';
 import { getTargetElement } from './domTarget';
 
-const createEffectWithTarget = (useEffectType: typeof useEffect | typeof useLayoutEffect) => {
+const createEffectWithTarget = (useEffectType: typeof useEffect | typeof useLayoutEffect) => { // useEffectType类型：useEffect ｜ useLayoutEffect
   /**
    *
    * @param effect
@@ -29,6 +29,7 @@ const createEffectWithTarget = (useEffectType: typeof useEffect | typeof useLayo
       const els = targets.map((item) => getTargetElement(item));
 
       // init run
+      // 初始化赋值
       if (!hasInitRef.current) {
         hasInitRef.current = true;
         lastElementRef.current = els;
@@ -43,6 +44,7 @@ const createEffectWithTarget = (useEffectType: typeof useEffect | typeof useLayo
         !depsAreSame(els, lastElementRef.current) ||
         !depsAreSame(deps, lastDepsRef.current)
       ) {
+        // 执行
         unLoadRef.current?.();
 
         lastElementRef.current = els;

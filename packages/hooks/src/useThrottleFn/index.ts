@@ -6,6 +6,15 @@ import useUnmount from '../useUnmount';
 
 type noop = (...args: any) => any;
 
+
+// 1
+// ThrottleOptions
+// export interface ThrottleOptions {
+//   wait?: number; // 等待时间，单位为毫秒
+//   leading?: boolean; // 是否在延迟开始前调用函数，前调用
+//   trailing?: boolean; // 是否在延迟开始后调用函数，后调用
+// }
+
 function useThrottleFn<T extends noop>(fn: T, options?: ThrottleOptions) {
   if (process.env.NODE_ENV === 'development') {
     if (typeof fn !== 'function') {
@@ -14,29 +23,34 @@ function useThrottleFn<T extends noop>(fn: T, options?: ThrottleOptions) {
   }
 
   const fnRef = useLatest(fn);
+  // useLatest
+  // 问题：这里为什么要在赋一次fn给fnRef.current呢 ？
+  // 回答：为了解决闭包问题
+  // issue：https://github.com/alibaba/hooks/issues/1121
 
-  const wait = options?.wait ?? 1000;
+  const wait = options?.wait ?? 1000; // 默认延时 1s
 
   const throttled = useMemo(
     () =>
-      throttle<T>(
+      throttle<T>( // 使用了 lodash 的能力
         ((...args: any[]) => {
           return fnRef.current(...args);
         }) as T,
         wait,
         options,
       ),
-    [],
+    [], // 缓存 throttle 函数
   );
 
+  // 组件卸载时，取消未执行的 throttle 函数
   useUnmount(() => {
     throttled.cancel();
   });
 
   return {
-    run: throttled as unknown as T,
-    cancel: throttled.cancel,
-    flush: throttled.flush,
+    run: throttled as unknown as T, // 触发 fn 的执行，可传参，run的参数将传递给lodash的throttle，最终传递给fn
+    cancel: throttled.cancel, // 取消当前节流
+    flush: throttled.flush, // 立即调用
   };
 }
 

@@ -36,7 +36,7 @@ export const createUpdateEffect: (hook: effectHookType) => effectHookType =
       return () => {
         isMounted.current = false;
       };
-    }, []);
+    }, []); // 注意依赖数组只能是空数组，表示在组件卸载时执行副作用
 
 
     hook(() => {
