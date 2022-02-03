@@ -9,6 +9,7 @@
 - [x] useUpdate 强制更新组件
 - [x] useUpdateEffect 忽略首次渲染时的执行，只在依赖更新时执行，参数和返回值类型和useEffect一样
 - [x] useClickAway 监听目标元素外的事件
+- [x] useLockFn 用于给一个异步函数增加竞态锁，防止并发执行；原理同 useThrottleFn，应付异步情况
 - [x] useThrottleFn 截流函数
 - [x] useThrottleEffect 为 useEffect 增加节流的能力 - 很精妙
 - [x] useThrottle 为 一个值 添加截流能力，和 useThrottleEffect 的实现差不多，可以叫做 useThrottleValue
