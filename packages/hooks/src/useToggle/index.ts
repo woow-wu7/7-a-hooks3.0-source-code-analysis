@@ -24,15 +24,20 @@ function useToggle<D, R>(defaultValue: D = false as unknown as D, reverseValue?:
 
   // useMemo 缓存了一个 Actions 类型的对象
   const actions = useMemo(() => {
+
     // reverseValueOrigin
-    // 1. 第二个参数不存在，把第一个参数取反(第一个参数不存在时即为undefined取反)
-    // 2. 第二个参数存在，使用第二个参数
+    // - 1. 第二个参数不存在，把第一个参数取反 ( 第一个参数不存在时即为undefined取反 )
+    // - 2. 第二个参数存在，使用第二个参数 ( 因为前置判断是 setState 的 prev === default )
+    // - 注意：
+    //    - 在判断时：reverseValue === undefined ? !defaultValue : reverseValue
+    //    - 不能写成：!reverseValue ? !defaultValue : reverseValue
+    //    - 因为：这里是支持boolean值类型的
     const reverseValueOrigin = (reverseValue === undefined ? !defaultValue : reverseValue) as D | R;
 
     const toggle = () => setState((s) => (s === defaultValue ? reverseValueOrigin : defaultValue));
     const set = (value: D | R) => setState(value);
     const setLeft = () => setState(defaultValue);
-    const setRight = () => setState(reverseValueOrigin);
+    const setRight = () => setState(reverseValueOrigin); // 需要考虑 reverseValue 不存在的情况，所以用 reverseValueOrigin 做判断
 
     return {
       toggle,

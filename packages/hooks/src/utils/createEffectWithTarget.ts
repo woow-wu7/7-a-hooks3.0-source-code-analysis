@@ -12,6 +12,7 @@ const createEffectWithTarget = (useEffectType: typeof useEffect | typeof useLayo
    * @param deps
    * @param target target should compare ref.current vs ref.current, dom vs dom, ()=>dom vs ()=>dom
    */
+  // 主要是通过 ref 做一些固定操作
   const useEffectWithTarget = (
     effect: EffectCallback,
     deps: DependencyList,
