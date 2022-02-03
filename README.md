@@ -14,7 +14,7 @@
 - [x] useThrottle 为 一个值 添加截流能力，和 useThrottleEffect 的实现差不多，可以叫做 useThrottleValue
 - [x] useToggle 取反，支持 0，1，2 个参数的取反
 - [x] useBoolean 利用 useToggle 很容易实现
-- [ ] useEventListener 优雅的使用 addEventListener
+- [x] useEventListener 优雅的使用 addEventListener
 
 
 
