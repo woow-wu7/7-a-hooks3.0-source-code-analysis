@@ -15,6 +15,12 @@ type noop = (...args: any) => any;
 //   trailing?: boolean; // 是否在延迟开始后调用函数，后调用
 // }
 
+// 2
+// import type 是最新的导入专门用来导入类型的语法
+// import type 解决以下问题：
+// - import { MyThing } from './some-module.js';
+// - 这个到底是导入的值，还是类型；!!! 如果是类型在编译成js的时候是会被删除的
+
 function useThrottleFn<T extends noop>(fn: T, options?: ThrottleOptions) {
   if (process.env.NODE_ENV === 'development') {
     if (typeof fn !== 'function') {

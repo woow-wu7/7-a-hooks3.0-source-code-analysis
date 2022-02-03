@@ -11,6 +11,9 @@
 - [x] useClickAway 监听目标元素外的事件
 - [x] useThrottleFn 截流函数
 - [x] useThrottleEffect 为 useEffect 增加节流的能力 - 很精妙
+- [x] useThrottle 为 一个值 添加截流能力，和 useThrottleEffect 的实现差不多，可以叫做 useThrottleValue
+- [x] useToggle 取反，支持 0，1，2 个参数的取反
+- [x] useBoolean 利用 useToggle 很容易实现
 
 
 
