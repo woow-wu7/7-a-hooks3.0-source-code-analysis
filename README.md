@@ -16,6 +16,8 @@
 - [x] useToggle 取反，支持 0，1，2 个参数的取反
 - [x] useBoolean 利用 useToggle 很容易实现
 - [x] useEventListener 优雅的使用 addEventListener
+- [x] useTitle 设置页面标题
+- [x] useMemoizedFn 持久化function，相当于2.0时的 usePersistFn
 
 
 
