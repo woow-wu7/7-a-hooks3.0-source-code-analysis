@@ -11,7 +11,7 @@ function useMap<K, T>(initialValue?: Iterable<readonly [K, T]>) {
   const set = (key: K, entry: T) => {
     setMap((prev) => {
       const temp = new Map(prev);
-      temp.set(key, entry);
+      temp.set(key, entry); // map.set(key, value)
       return temp;
     });
   };
@@ -23,14 +23,14 @@ function useMap<K, T>(initialValue?: Iterable<readonly [K, T]>) {
   const remove = (key: K) => {
     setMap((prev) => {
       const temp = new Map(prev);
-      temp.delete(key);
+      temp.delete(key); // map.delete(key)
       return temp;
     });
   };
 
   const reset = () => setMap(getInitValue());
 
-  const get = (key: K) => map.get(key);
+  const get = (key: K) => map.get(key); // map.get(key)
 
   return [
     map,

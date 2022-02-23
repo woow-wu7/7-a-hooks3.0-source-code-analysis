@@ -1,8 +1,10 @@
 import type { DependencyList } from 'react';
 import { useEffect } from 'react';
 
+// useAsyncEffect
+// - useEffect 支持异步函数
 function useAsyncEffect(
-  effect: () => AsyncGenerator<void, void, void> | Promise<void>,
+  effect: () => AsyncGenerator<void, void, void> | Promise<void>, // generator | promise 不需要返回值
   deps: DependencyList,
 ) {
   function isGenerator(
@@ -15,6 +17,7 @@ function useAsyncEffect(
     let cancelled = false;
     async function execute() {
       if (isGenerator(e)) {
+        // generator
         while (true) {
           const result = await e.next();
           if (cancelled || result.done) {
@@ -22,6 +25,7 @@ function useAsyncEffect(
           }
         }
       } else {
+        // promise
         await e;
       }
     }
