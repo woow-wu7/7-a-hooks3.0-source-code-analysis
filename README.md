@@ -18,6 +18,7 @@
 - [x] useTitle 设置页面标题
 - [x] useMemoizedFn 持久化 function，相当于 2.0 时的 usePersistFn
 - [x] useSet 和 useMap
+- [x] useAsyncEffect
 
 ### (二) 其他源码分析
 
